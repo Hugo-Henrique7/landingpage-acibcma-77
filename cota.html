@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagamento da Cota — A Noite do Legado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,500;1,600&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deep: #0A1626;
+    --navy-card: #0D1B2E;
+    --gold: #C9A876;
+    --gold-light: #E4D4B0;
+    --white: #FBF9F5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--navy-deep);
+    color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  header {
+    padding: 26px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(201,168,118,0.15);
+  }
+  header .brand { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 19px; color: var(--gold-light); }
+  header .brand span { color: var(--gold); }
+  .back-link { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #C7CEDA; transition: color .25s ease; }
+  .back-link:hover { color: var(--gold-light); }
+
+  main {
+    flex: 1;
+    display: flex; align-items: center; justify-content: center;
+    padding: 60px 24px 90px;
+  }
+  .wrap { max-width: 560px; width: 100%; }
+
+  .eyebrow { font-size: 12px; letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; text-align: center; }
+  .cota-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(34px,6vw,50px); color: var(--white); text-align: center; margin-bottom: 10px; }
+  .cota-price { text-align: center; font-size: 28px; color: var(--gold-light); font-weight: 600; margin-bottom: 40px; }
+
+  .divider-motif { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 0 0 40px; color: var(--gold); }
+  .divider-motif .line { height: 1px; width: 60px; background: var(--gold); opacity: 0.5; }
+  .divider-motif .diamond { font-size: 11px; }
+
+  .bank-card {
+    background: var(--navy-card);
+    border: 1px solid rgba(201,168,118,0.25);
+    border-radius: 16px;
+    padding: 36px 38px;
+  }
+  .bank-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--gold-light);
+    margin-bottom: 22px;
+    text-align: center;
+  }
+  .bank-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    gap: 20px;
+  }
+  .bank-row:last-child { border-bottom: none; }
+  .bank-label { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #9AA6B5; white-space: nowrap; }
+  .bank-value { font-size: 15px; font-weight: 600; color: var(--white); font-family: monospace; letter-spacing: 0.02em; text-align: right; }
+  .bank-value.name { font-family: 'Poppins', sans-serif; font-weight: 500; }
+
+  .copy-all-btn {
+    display: block; width: 100%; text-align: center;
+    margin-top: 24px;
+    background: transparent; border: 1px solid var(--gold); color: var(--gold-light);
+    border-radius: 30px; padding: 13px 0; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; transition: background .25s ease, color .25s ease;
+  }
+  .copy-all-btn:hover { background: var(--gold); color: var(--navy-deep); }
+  .copy-feedback { text-align: center; font-size: 12px; color: var(--gold-light); margin-top: 10px; height: 16px; }
+
+  footer { text-align: center; padding: 30px 24px; font-size: 11px; color: #55606F; border-top: 1px solid rgba(201,168,118,0.1); }
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">77 <span>·</span> A Noite do Legado</div>
+    <a href="index.html#cotas" class="back-link">← Voltar às cotas</a>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="eyebrow">Pagamento da cota</div>
+      <div class="cota-name" id="cotaName">Carregando...</div>
+      <div class="cota-price" id="cotaPrice"></div>
+      <div class="divider-motif"><span class="line"></span><span class="diamond">✦</span><span class="line"></span></div>
+
+      <div class="bank-card">
+        <h3>Dados para transferência</h3>
+        <div class="bank-row">
+          <span class="bank-label">Beneficiário</span>
+          <span class="bank-value name">Associação Comercial, Agrícola e Industrial de Barra do Corda</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-label">CNPJ</span>
+          <span class="bank-value">05.276.977/0001-50</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-label">Banco</span>
+          <span class="bank-value">Banco do Brasil S.A.</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-label">Agência</span>
+          <span class="bank-value">0782-X</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-label">Conta</span>
+          <span class="bank-value">37850-X</span>
+        </div>
+        <button type="button" class="copy-all-btn" onclick="copyAllBankData()">Copiar todos os dados</button>
+        <div class="copy-feedback" id="copyFeedback"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>Associação Comercial, Agrícola e Industrial de Barra do Corda — ACAIBC</footer>
+
+<script>
+  const COTAS = {
+    farol:   { name: "Farol dos 77",        price: "R$ 5.000,00" },
+    colunas: { name: "Colunas da Noite",    price: "R$ 2.000,00" },
+    raizes:  { name: "Raízes do Progresso", price: "R$ 1.000,00" }
+  };
+
+  function getParam(name) {
+    const params = new URLSearchParams(window.location.search);
+    return params.get(name);
+  }
+
+  const cotaKey = getParam('cota') || 'farol';
+  const cota = COTAS[cotaKey] || COTAS.farol;
+
+  document.getElementById('cotaName').textContent = cota.name;
+  document.getElementById('cotaPrice').textContent = cota.price;
+  document.title = `Pagamento — ${cota.name} | A Noite do Legado`;
+
+  function copyAllBankData() {
+    const text = `Beneficiário: Associação Comercial, Agrícola e Industrial de Barra do Corda\nCNPJ: 05.276.977/0001-50\nBanco: Banco do Brasil S.A.\nAgência: 0782-X\nConta: 37850-X`;
+    navigator.clipboard.writeText(text).then(() => {
+      const fb = document.getElementById('copyFeedback');
+      fb.textContent = "Dados copiados!";
+      setTimeout(() => fb.textContent = "", 2500);
+    });
+  }
+</script>
+
+</body>
+</html>
